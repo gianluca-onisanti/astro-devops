@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+	isOpen: boolean;
+	links: {href : string, icon?: string, label: string}[];
+}
+
+const { isOpen = false, links = [] } = Astro.props;
+---
+<div class="header-container">
+    <div class="header-box">
+        <nav class="header">
+            <ul>
+            {links.map((link) => (
+                <li>
+                <a href={link.href}>
+                    <Icon name={link.icon} />
+                    {link.label}
+                </a>
+                </li>
+            ))}
+            </ul>
+        </nav>
+    </div>
+</div>

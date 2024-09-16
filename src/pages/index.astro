@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="DevOps C/ Astro - Gianluca Onisanti">
+  <main>
+    <form id="meuFormulario">
+      <div>
+        <label for="nomeCompleto">Nome Completo:</label>
+        <input type="text" id="nomeCompleto" name="nomeCompleto" required />
+      </div>
+      <div>
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" name="curso" required />
+      </div>
+      <div>
+        <label for="comentario">Comentário:</label>
+        <textarea id="comentario" name="comentario" rows="4" required></textarea>
+      </div>
+      <button type="submit">Enviar</button>
+    </form>
+
+    <div id="dadosJSON"></div>
+	
+</main>
+<script is:inline>
+    document.getElementById('meuFormulario').addEventListener('submit', function(event) {
+      // Captura os dados do formulário
+      const nomeCompleto = document.getElementById('nomeCompleto').value;
+      const curso = document.getElementById('curso').value;
+      const comentario = document.getElementById('comentario').value;
+
+      // Cria um objeto JSON com os dados
+      const dados = {
+        nomeCompleto,
+        curso,
+        comentario
+      }
+
+      // Envia os dados para o servidor
+    fetch('/dados.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Sucesso:', data);
+      })
+      .catch((error) => {
+        console.error('Erro:', error);
+      });
+    });
+  </script>
+
+</Layout>
