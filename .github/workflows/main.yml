@@ -2,7 +2,7 @@ name: Astro CI/CD
 
 on:
   push:
-    branches: [ main ] 
+    branches: [ main ] # Ou a branch que você usa para deploy
   pull_request:
     branches: [ main ]
 
@@ -11,19 +11,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4   
- # Atualizado para a versão mais recente
+    - uses: actions/checkout@v3
     - name: Setup Node
       uses: actions/setup-node@v3
       with:
-        node-version: '20' # Atualizado para a versão 20
-        cache: 'npm'
+        node-version: '18' # Ou a versão que seu projeto Astro usa
     - name: Install dependencies
       run: npm ci
     - name: Build Astro
       run: npm run build
     - name: Deploy
-      uses: peaceiris/actions-gh-pages@v4.0.0 # Verifique se há uma versão mais recente disponível
+      uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist 
+        publish_dir: ./dist # Ou o diretório onde seu Astro gera a build
