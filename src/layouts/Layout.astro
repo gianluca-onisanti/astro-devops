@@ -1,0 +1,151 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+	}
+
+	main {
+		margin: auto;
+		padding: 1rem;
+		width: 800px;
+		max-width: calc(100% - 2rem);
+		color: white;
+		font-size: 20px;
+		line-height: 1.6;
+	}
+
+	.astro-a {
+		position: absolute;
+		top: -32px;
+		left: 50%;
+		transform: translatex(-50%);
+		width: 220px;
+		height: auto;
+		z-index: -1;
+	}
+
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+
+	.center {
+		display: grid;
+		justify-content: center;
+	}
+
+	.textfield-container {
+		justify-content: center;
+		font-family: Georgia, 'Times New Roman', Times, serif !important;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.textfield {
+		font-family: Georgia, 'Times New Roman', Times, serif !important;
+		background-color: #22222200;
+		color: #8400ac;
+		border: none;
+		padding: 15px 20px;
+		border-radius: 5px;
+		font-size: 18px;
+		outline: none;
+		box-shadow: 0 0 10px #4c0169;
+		transition: all 0.3s ease;
+		width: inherit;
+	}
+
+	.textfield:focus {
+		box-shadow: #d24bfc;
+	}
+
+	.textfield::placeholder {
+		color: #d24bfc; 
+		opacity: 0.7; 
+	}
+
+	.textfield:hover {
+		color: #d24bfc;
+		box-shadow: #fc4b4b;
+	}
+
+	.textfield-label {
+		font-size: 16px;
+		color: #8400ac;
+	}
+
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: #4c0169;
+		border-radius: 4px;
+		transition: background-color 0.3s ease;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background-color: #8400ac;
+	}
+</style>

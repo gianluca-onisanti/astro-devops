@@ -1,0 +1,10 @@
+---
+const { label, width } = Astro.props;
+---
+
+    <div style=`width: ${width};` class="textfield-container">
+        <div>
+            <label style={`width: ${width};`} class="textfield-label">{label}</label>
+        </div>
+        <input class="textfield">
+    </div>
