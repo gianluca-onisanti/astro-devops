@@ -8,13 +8,8 @@ interface FormData {
   idade: number;
 }
 
-// Interface para as props do componente Lista
-interface ListaProps {
-  // (Sem alterações aqui)
-}
-
 // Componente funcional Lista
-const Lista: React.FC<ListaProps> = () => {
+const Lista: React.FC = () => {
   const [dados, setDados] = useState<FormData[]>([]); 
   const [erro, setErro] = useState<string | null>(null);
 
