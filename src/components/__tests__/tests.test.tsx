@@ -2,14 +2,14 @@ import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Formulario from '../Formulario';
 import Lista from '../Lista';
-import axios, { type AxiosInstance } from 'axios';
+import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
 describe('Testes de Formulário', () => {
   let mock: MockAdapter;
 
   beforeEach(() => {
-    mock = new MockAdapter(axios as AxiosInstance);
+    mock = new MockAdapter(axios as any);
   });
 
   afterEach(() => {
@@ -67,7 +67,7 @@ describe('Testes de Lista', () => {
     let mock: MockAdapter;
   
     beforeEach(() => {
-      mock = new MockAdapter(axios as AxiosInstance);
+      mock = new MockAdapter(axios as any);
     });
   
     afterEach(() => {
