@@ -3,14 +3,20 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "concurrently \"astro dev\" \"node scripts/server.cjs\"",
+    "start": "concurrently \"astro dev\" \"node scripts/server.cjs\"",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/react": "^3.6.2",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/material": "^6.1.1",
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
     "astro": "^4.15.6",
     "axios": "^1.7.7",
     "body-parser": "^1.20.3",
@@ -19,6 +25,11 @@
     "fs": "^0.0.1-security",
     "material-icons": "^1.13.12",
     "node": "^22.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "typescript": "^5.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
   }
 }

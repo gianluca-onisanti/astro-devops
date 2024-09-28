@@ -1,58 +1,23 @@
 ---
+import Formulario from '../components/Formulario';
+import Lista from '../components/Lista';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="DevOps Com Astro - Gianluca Onisanti">
-  <main>
-    <form id="meuFormulario">
-      <div>
-        <label for="nomeCompleto">Nome Completo:</label>
-        <input type="text" id="nomeCompleto" name="nomeCompleto" required />
+  <main style="display: flex;"> 
+    <div style="max-height: 500px; flex: 1; margin-right: 20px;"> 
+      <Formulario client:load />
+      <div style="text-align: center; margin-top:-30px;">
+        <h2>App ReactAstro/AxiosAPI</h2>
+        <p style="font-size:small; margin-top:-20px;">Ao clicar em 'Enviar', os dados são escritos em um JSON local por meio
+          do Node.js, que é ativado por API ao inicizalizar o aplicativo. Então, uma escuta entre os dois
+          componentes é ativada, trazendo os dados novos imediatamente na lista.
+        </p>
       </div>
-      <div>
-        <label for="curso">Curso:</label>
-        <input type="text" id="curso" name="curso" required />
-      </div>
-      <div>
-        <label for="comentario">Comentário:</label>
-        <textarea id="comentario" name="comentario" rows="4" required></textarea>
-      </div>
-      <button type="submit">Enviar</button>
-    </form>
-
-    <div id="dadosJSON"></div>
-	
-</main>
-<script is:inline>
-    document.getElementById('meuFormulario').addEventListener('submit', function(event) {
-      // Captura os dados do formulário
-      const nomeCompleto = document.getElementById('nomeCompleto').value;
-      const curso = document.getElementById('curso').value;
-      const comentario = document.getElementById('comentario').value;
-
-      // Cria um objeto JSON com os dados
-      const dados = {
-        nomeCompleto,
-        curso,
-        comentario
-      }
-
-      // Envia os dados para o servidor
-    fetch('/dados.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dados)
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Sucesso:', data);
-      })
-      .catch((error) => {
-        console.error('Erro:', error);
-      });
-    });
-  </script>
-
+    </div>
+    <div style="margin-top: 35px; flex: 1; max-height: 500px; overflow: auto;"> 
+      <Lista client:load />
+    </div>
+  </main>
 </Layout>
